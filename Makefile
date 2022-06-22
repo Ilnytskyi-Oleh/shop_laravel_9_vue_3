@@ -1,5 +1,5 @@
 dir=${CURDIR}
-export COMPOSE_PROJECT_NAME=environment3
+export COMPOSE_PROJECT_NAME=shop_laravel_9_vue_3
 
 ifndef APP_ENV
 	# Determine if .env file exist
