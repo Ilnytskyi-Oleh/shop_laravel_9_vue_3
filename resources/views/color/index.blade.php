@@ -26,7 +26,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('category.create') }}" class="btn btn-primary">Добавить</a>
+                                <a href="{{ route('color.create') }}" class="btn btn-primary">Добавить</a>
                             </div>
 
                             <div class="card-body table-responsive p-0">
@@ -35,13 +35,15 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Наименование</th>
+                                        <th>Цвет</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($colors as $color)
                                         <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td><a href="{{route('category.show', $category)}}">{{ $category->title }}</a></td>
+                                            <td>{{ $color->id }}</td>
+                                            <td><a href="{{route('color.show', $color)}}">{{ $color->title }}</a></td>
+                                            <td><div style="width: 20px; height: 20px; background: {{'#' . $color->title}}"></div></td>
                                         </tr>
                                     @endforeach
                                     </tbody>
