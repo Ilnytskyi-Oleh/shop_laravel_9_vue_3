@@ -43,7 +43,7 @@
                                         <tr>
                                             <td>{{ $color->id }}</td>
                                             <td><a href="{{route('color.show', $color)}}">{{ $color->title }}</a></td>
-                                            <td><div style="width: 20px; height: 20px; background: {{'#' . $color->title}}"></div></td>
+                                            <td><div style="width: 20px; height: 20px; background: {{ $color->title}}"></div></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('color_products', function (Blueprint $table) {
+        Schema::create('color_product', function (Blueprint $table) {
             $table->id();
             $table->foreignId('color_id')->nullable()->index()->constrained();
             $table->foreignId('product_id')->nullable()->index()->constrained();

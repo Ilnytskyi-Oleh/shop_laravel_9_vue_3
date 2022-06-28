@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Пользователь: {{ $user->name }}</h1>
+                    <h1 class="m-0">Продукт: {{ $product->title }}</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,10 +25,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('user.edit', $user) }}" class="btn btn-primary">Редактировать</a>
-
+                            <a href="{{ route('product.edit', $product) }}" class="btn btn-primary">Редактировать</a>
                             <div class="d-inline-block ml-2 ">
-                                <form action="{{ route('user.delete', $user) }}" method="POST">
+                                <form action="{{ route('product.delete', $product) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"
@@ -37,48 +36,45 @@
                                 </form>
                             </div>
                         </div>
-
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
                                 <tbody>
                                     <tr>
                                         <td>ID:</td>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $product->id }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Имя:</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td>Тайтл:</td>
+                                        <td>{{ $product->title }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Фамилия:</td>
-                                        <td>{{ $user->surname }}</td>
+                                        <td> Описание:</td>
+                                        <td>{{ \Illuminate\Support\Str::words($product->description, 10) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Отчество:</td>
-                                        <td>{{ $user->patronymic }}</td>
+                                        <td> Контент:</td>
+                                        <td>{{ \Illuminate\Support\Str::words($product->content, 10) }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email:</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td> Изображение:</td>
+                                        <td><img height="100" width="100" src="{{asset('storage/'. $product->preview_image)}}" alt=""></td>
                                     </tr>
                                     <tr>
-                                        <td>Возраст:</td>
-                                        <td>{{ $user->age }}</td>
+                                        <td>Ціна:</td>
+                                        <td>{{ $product->price }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Пол:</td>
-                                        <td>{{ $user->genderTitle }}</td>
+                                        <td>Кількість на складі:</td>
+                                        <td>{{ $product->count }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Адрес:</td>
-                                        <td>{{ $user->address }}</td>
+                                        <td>Категорія:</td>
+                                        <td>{{ $product->category->title }}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <!-- /.row -->

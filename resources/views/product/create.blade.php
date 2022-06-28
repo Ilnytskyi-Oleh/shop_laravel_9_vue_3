@@ -32,7 +32,7 @@
             @endif
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('product.store') }}" method="POST">
+                <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="title" value="{{ old('title') }}" class="form-control" placeholder="Имя...">
@@ -47,50 +47,45 @@
                         <input type="number" name="price" value="{{ old('price') }}" class="form-control" placeholder="Цена...">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="count" value="{{ old('count') }}" class="form-control" placeholder="Количество...">
+                        <input type="number" name="count" value="{{ old('count') }}" class="form-control" placeholder="Количество...">
                     </div>
                     <div class="form-group">
                         <label>Категория</label>
                         <select name="category_id" class="form-control select2" style="width: 100%;">
                             <option selected="selected" disabled>Виберите категорию</option>
-                            <option  value="1">Игры</option>
-                            <option value="2">Еда</option>
+                            @foreach($categories as $category)
+                                <option  value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Теги</label>
                         <select class="select2" name="tags[]" multiple="multiple" data-placeholder="Выберите тег" style="width: 100%;">
-                            <option value="1">Alabama</option>
-                            <option value="2">Alaska</option>
+                            @foreach($tags as $tag)
+                                <option  value="{{ $tag->id }}">{{ $tag->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Цвет</label>
                         <select class="select2" name="colors[]" multiple="multiple" data-placeholder="Выберите цвет" style="width: 100%;">
-                            <option value="1">Красный</option>
-                            <option value="2">Желтый</option>
+                            @foreach($colors as $color)
+                                <option  value="{{ $color->id }}">{{ $color->title }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputFile">File input</label>
                         <div class="input-group">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <input type="file" name="preview_image" class="custom-file-input" id="exampleInputFile">
                                 <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                             </div>
                             <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
+                                <span class="input-group-text">Загрузка</span>
                             </div>
                         </div>
                     </div>
-
-{{--                    <div class="form-group">--}}
-{{--                        <select name="gender" class="custom-select form-control" id="exampleSelectBorder">--}}
-{{--                            <option disabled selected>Пол</option>--}}
-{{--                            <option {{ old('gender') == 1 ? 'selected' : '' }} value="1">Мужской</option>--}}
-{{--                            <option {{ old('gender') == 2 ? 'selected' : '' }} value="2">Женский</option>--}}
-{{--                        </select>--}}
-{{--                    </div>--}}
                     <div class="form-group">
                         <input type="submit"  class="btn btn-primary" value="Добавить">
                     </div>
