@@ -40,6 +40,9 @@
                         <input type="number" name="price" value="{{ $product->price }}" class="form-control" placeholder="Цена...">
                     </div>
                     <div class="form-group">
+                        <input type="number" name="old_price" value="{{ $product->old_price }}" class="form-control" placeholder="Старая цена...">
+                    </div>
+                    <div class="form-group">
                         <input type="number" name="count" value="{{ $product->count }}" class="form-control" placeholder="Количество...">
                     </div>
                     <div class="form-group">

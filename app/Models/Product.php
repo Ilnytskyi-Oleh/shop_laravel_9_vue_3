@@ -13,6 +13,7 @@ class Product extends Model
         'content',
         'preview_image',
         'price',
+        'old_price',
         'count',
         'is_published',
         'user_id',
@@ -32,5 +33,10 @@ class Product extends Model
     public function colors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Color::class);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        return url('storage/'.$this->preview_image);
     }
 }
