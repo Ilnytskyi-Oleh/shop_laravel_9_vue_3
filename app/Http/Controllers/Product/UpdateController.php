@@ -15,7 +15,9 @@ class UpdateController extends Controller
 
         if($request->hasFile('preview_image')){
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-            unlink(storage_path('app/public/'. $product->preview_image));
+            if(Storage::exists(storage_path('app/public/'. $product->preview_image))){
+                unlink(storage_path('app/public/'. $product->preview_image));
+            }
         }
 
         $tagsIds = $data['tags'];

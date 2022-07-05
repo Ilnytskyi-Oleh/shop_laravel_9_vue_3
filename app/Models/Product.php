@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
+    use HasFactory;
 
     protected $fillable =[
         'title',
@@ -37,6 +40,9 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
+        if(Str::contains($this->preview_image, 'https://')) {
+            return $this->preview_image;
+        }
         return url('storage/'.$this->preview_image);
     }
 }

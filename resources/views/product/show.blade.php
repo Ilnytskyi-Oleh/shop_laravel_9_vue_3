@@ -57,7 +57,7 @@
                                     </tr>
                                     <tr>
                                         <td> Изображение:</td>
-                                        <td><img height="100" width="100" src="{{asset('storage/'. $product->preview_image)}}" alt=""></td>
+                                        <td><img height="100" width="100" src="{{$product->imageUrl}}" alt=""></td>
                                     </tr>
                                     <tr>
                                         <td>Ціна:</td>
