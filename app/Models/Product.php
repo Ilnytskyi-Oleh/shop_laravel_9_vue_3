@@ -21,11 +21,17 @@ class Product extends Model
         'is_published',
         'user_id',
         'category_id',
+        'group_id',
     ];
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Group::class);
     }
 
     public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

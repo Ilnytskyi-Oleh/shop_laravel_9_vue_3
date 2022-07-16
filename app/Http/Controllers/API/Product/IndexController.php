@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $products = Product::inRandomOrder()->get();
+        $products = Product::all();
         return ProductResource::collection($products);
     }
 }

@@ -17,11 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//         \App\Models\User::factory(10)->create();
-//        Tag::factory(15)->create();
-//        Category::factory(5)->create();
-//        Color::factory(10)->create();
-//        Product::factory(10)->create();
 
         Category::factory()
             ->count(5)
@@ -30,5 +25,6 @@ class DatabaseSeeder extends Seeder
                 ->has(Tag::factory()->count(2))
                 ->has(Color::factory()->count(2)))
             ->create();
+
     }
 }

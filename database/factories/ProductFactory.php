@@ -17,14 +17,16 @@ class ProductFactory extends Factory
     public function definition()
     {
         $range = rand(2,3);
+        $price = $this->faker->randomNumber($range);
+        $oldPrice = $price + rand(5, 100);
         return [
             'title' => $this->faker->word,
-            'description' => $this->faker->word(10),
-            'content' => $this->faker->word(50),
+            'description' => $this->faker->words(5, 10),
+            'content' => $this->faker->realTextBetween(10, 30),
             'preview_image' => $this->faker->imageUrl,
-            'price' => $this->faker->randomNumber($range),
-            'old_price' => $this->faker->randomNumber($range),
-            'count' => $this->faker->randomNumber($range),
+            'price' => $price,
+            'old_price' => $oldPrice,
+            'count' => rand(1,1000),
             'is_published' => (bool)rand(0, 1),
             'category_id' => (bool)rand(1, 5),
         ];
