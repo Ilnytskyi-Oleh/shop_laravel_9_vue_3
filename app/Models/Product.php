@@ -14,7 +14,6 @@ class Product extends Model
         'title',
         'description',
         'content',
-        'preview_image',
         'price',
         'old_price',
         'count',
@@ -50,5 +49,10 @@ class Product extends Model
             return $this->preview_image;
         }
         return url('storage/'.$this->preview_image);
+    }
+
+    public function productImages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ProductImage::class, 'product_id', 'id');
     }
 }
