@@ -14,7 +14,7 @@ class ProductImage extends Model
 
     public function getImageUrlAttribute()
     {
-        if(Str::contains($this->preview_image, 'https://')) {
+        if(Str::contains($this->file_path, 'https://')) {
             return $this->file_path;
         }
         return url('storage/'.$this->file_path);
