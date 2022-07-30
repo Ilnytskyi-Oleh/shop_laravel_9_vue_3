@@ -29,7 +29,9 @@ class ProductFilter extends AbstractFilter
 
     public function colors(Builder $builder, $value)
     {
-        $builder->whereIn('color_id', $value);
+        $builder->whereHas('colors', function ($b) use ($value){
+            $b->whereIn('color_id', $value);
+        });
     }
 
     public function tags(Builder $builder, $value)
@@ -41,6 +43,6 @@ class ProductFilter extends AbstractFilter
 
     public function price(Builder $builder, $value)
     {
-        $builder->whereBetween($value['from'], $value['to']);
+        $builder->whereBetween('price', $value);
     }
 }
