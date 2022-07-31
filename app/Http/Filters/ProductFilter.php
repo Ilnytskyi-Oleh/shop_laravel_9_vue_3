@@ -11,6 +11,7 @@ class ProductFilter extends AbstractFilter
     const COLORS = 'colors';
     const TAGS = 'tags';
     const PRICE = 'price';
+    const ORDER_BY = 'orderBy';
 
     protected function getCallbacks(): array
     {
@@ -19,6 +20,8 @@ class ProductFilter extends AbstractFilter
             self::COLORS => [$this, 'colors'],
             self::TAGS => [$this, 'tags'],
             self::PRICE => [$this, 'price'],
+            self::ORDER_BY => [$this, 'orderBy'],
+
         ];
     }
 
@@ -44,5 +47,12 @@ class ProductFilter extends AbstractFilter
     public function price(Builder $builder, $value)
     {
         $builder->whereBetween('price', $value);
+    }
+
+    public function orderBy(Builder $builder, $value)
+    {
+        foreach ($value as $col => $val){
+            $builder->orderBy($col, $val);
+        }
     }
 }
