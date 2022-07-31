@@ -28,6 +28,7 @@ class IndexRequest extends FormRequest
             'price' => 'nullable|array',
             'tags' => 'nullable|array',
             'colors' => 'nullable|array',
+            'page' => 'required|integer',
             'orderBy' => 'array|nullable',
             'orderBy.title' => 'nullable|string|in:ASC,DESC',
             'orderBy.price' => 'nullable|string|in:ASC,DESC'
